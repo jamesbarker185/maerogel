@@ -1,0 +1,438 @@
+.mg .iso-plate {
+  overflow: hidden;
+}
+
+.mg {
+  --mg-void: #cfcfca;
+  --mg-cavity: #94a2a7;
+  --mg-char: #3b342e;
+  --mg-ash: #f6f5f0;
+  --mg-fleck: #c9c6bb;
+  --mg-grain: #a07d33;
+  --mg-hot: #e8590c;
+  --mg-on: #30a46c;
+  --mg-off: #d6d6d3;
+  --mg-cloud: #8f8c84;
+  --mg-water: #7fa3b0;
+  --mg-sol: #dceaee;
+  --mg-gel: #c3d9e3;
+  --mg-net: #4f6b78;
+  --mg-pore: #b9d6e2;
+  --mg-smoke: #8f8f8a;
+  --mg-vapour: #a9b7bc;
+  --mg-petal: #e0597f;
+  --mg-petal-line: #b23e63;
+  --mg-pistil: #f0bd2b;
+  --mg-leaf: #63a35a;
+  --mg-flame: #f47a1f;
+  --mg-flame-core: #ffe6a8;
+  --mg-flame-blue: #3d78d8;
+  --mg-heat: #e5484d;
+}
+
+.iso[data-theme="dark"] .mg {
+  --mg-void: #0b0b0b;
+  --mg-cavity: #0d1214;
+  --mg-char: #121010;
+  --mg-ash: #d9d8d2;
+  --mg-fleck: #8a877e;
+  --mg-off: #2a2a2a;
+  --mg-cloud: #a5a299;
+  --mg-sol: #22343b;
+  --mg-gel: #2f4a55;
+  --mg-net: #b8d4df;
+  --mg-pore: #26404a;
+  --mg-smoke: #8a8a86;
+  --mg-vapour: #6e7e84;
+}
+
+/* Material token sets: each redefines the kit's paper, shades and top for what the part is made of. */
+.mg-husk {
+  --anatomy-paper: #e6c983;
+  --anatomy-face: #e6c983;
+  --anatomy-top: #efd697;
+  --anatomy-shade-0: #c69f52;
+  --anatomy-shade-1: #d2ae62;
+  --anatomy-shade-2: #dcbb71;
+  --anatomy-shade-3: #e5c780;
+}
+.mg-amber {
+  --anatomy-paper: #c8996c;
+  --anatomy-top: #d6ad84;
+  --anatomy-shade-0: #9c6b40;
+  --anatomy-shade-1: #ab7a4d;
+  --anatomy-shade-2: #b98a5c;
+  --anatomy-shade-3: #c7996b;
+}
+.mg-hose {
+  --anatomy-top: #f0a37a;
+  --anatomy-shade-0: #c4572b;
+  --anatomy-shade-2: #de7a4c;
+}
+.mg-liquid,
+.mg-acid {
+  --anatomy-paper: #d7e8ee;
+  --anatomy-top: #e3f0f4;
+  --anatomy-shade-0: #c1d7df;
+  --anatomy-shade-1: #c9dde4;
+  --anatomy-shade-2: #d0e2e8;
+  --anatomy-shade-3: #d7e7ec;
+}
+.mg-liquid > .iso-solid,
+.mg-acid > .iso-solid {
+  opacity: 0.82;
+}
+.mg-gel {
+  --anatomy-paper: #c9dde5;
+  --anatomy-top: #d9e8ee;
+  --anatomy-shade-0: #a9c3ce;
+  --anatomy-shade-1: #b4cbd5;
+  --anatomy-shade-2: #bed3dc;
+  --anatomy-shade-3: #c7dae2;
+}
+.mg-wet {
+  --anatomy-paper: #8fb4c4;
+  --anatomy-top: #9fc0ce;
+  --anatomy-shade-0: #7aa1b2;
+  --anatomy-shade-1: #82a8b9;
+  --anatomy-shade-2: #8aafbf;
+  --anatomy-shade-3: #92b6c5;
+}
+.mg-aero {
+  --anatomy-paper: #dceaf5;
+  --anatomy-top: #eaf3fa;
+  --anatomy-shade-0: #bdd3e6;
+  --anatomy-shade-1: #c8daeb;
+  --anatomy-shade-2: #d2e2f0;
+  --anatomy-shade-3: #dce9f4;
+}
+.mg-aero > .iso-solid > .iso-fill,
+.mg-aero > .iso-solid > .iso-shade,
+.mg-aero > .iso-solid > .iso-top {
+  fill-opacity: 0.88;
+}
+.mg-glass > .iso-solid > .iso-fill {
+  fill: #e6f0f3;
+  fill-opacity: 0.5;
+}
+.mg-glass > .iso-solid > .iso-shade {
+  opacity: 0.4;
+}
+.mg-glass > .iso-solid > .iso-top {
+  fill-opacity: 0.35;
+}
+.mg-inside {
+  --anatomy-mid: #b5c3c8;
+  --anatomy-lo: #9aa9ae;
+}
+.iso[data-theme="dark"] .mg :is(.mg-husk, .mg-amber, .mg-liquid, .mg-acid, .mg-gel, .mg-wet, .mg-aero, .mg-hose) {
+  --anatomy-paper: inherit;
+}
+
+.mg-fillface {
+  fill: var(--anatomy-top);
+  stroke: none;
+}
+.mg-grain {
+  fill: none;
+  stroke: var(--mg-grain);
+  stroke-width: 0.55;
+  stroke-linecap: round;
+}
+.mg-void {
+  fill: var(--mg-void);
+  stroke: none;
+}
+.mg-cavity {
+  fill: var(--mg-cavity);
+  stroke: none;
+}
+.mg-floor {
+  fill: var(--anatomy-shade-1);
+  stroke: none;
+}
+.mg-char {
+  fill: var(--mg-char);
+}
+.mg-ash {
+  fill: var(--mg-ash);
+}
+.mg-ash-fleck {
+  fill: none;
+  stroke: var(--mg-fleck);
+  stroke-width: 0.5;
+  stroke-linecap: round;
+}
+.mg-coil path {
+  fill: none;
+  stroke: var(--mg-hot);
+  stroke-width: 1.3;
+}
+.mg-lamp {
+  fill: var(--mg-off);
+}
+.mg-lamp[data-on] {
+  fill: var(--mg-on);
+}
+.mg-lamp[data-hot] {
+  fill: var(--mg-hot);
+}
+.mg-step {
+  fill: var(--anatomy-faint);
+}
+.mg-step[data-on] {
+  fill: var(--anatomy-hi);
+}
+.mg-cloud circle {
+  fill: var(--mg-cloud);
+}
+.mg-meniscus {
+  stroke: var(--mg-water) !important;
+}
+.mg-shine,
+.mg-glare {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  opacity: 0.75;
+}
+.iso[data-theme="dark"] .mg :is(.mg-shine, .mg-glare) {
+  opacity: 0.18;
+}
+.mg-sol {
+  fill: var(--mg-sol);
+}
+.mg-gelface {
+  fill: var(--mg-gel);
+}
+.mg-ceramic {
+  fill: #ebe6de;
+  stroke: none;
+}
+.iso[data-theme="dark"] .mg-ceramic {
+  fill: #2a2725;
+}
+.mg-glowface path {
+  fill: var(--mg-flame);
+}
+.mg-petal {
+  fill: var(--mg-petal);
+  stroke: var(--mg-petal-line);
+  stroke-width: 0.4;
+  stroke-linejoin: round;
+}
+.mg-pistil {
+  fill: var(--mg-pistil);
+  stroke: #b8891a;
+  stroke-width: 0.4;
+}
+.mg-leaf {
+  fill: var(--mg-leaf);
+  stroke: #3f7a38;
+  stroke-width: 0.4;
+}
+.mg-stem {
+  stroke: #4f8a46 !important;
+  stroke-width: 0.9 !important;
+}
+.mg-smoke path,
+.mg-vapour path {
+  fill: none;
+  stroke: var(--mg-smoke);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+.mg-vapour path {
+  stroke: var(--mg-vapour);
+}
+.mg-vapour circle {
+  fill: #ffffff;
+  opacity: 0.8;
+}
+.mg-lensbg {
+  fill: var(--anatomy-card);
+}
+.mg-lensglare {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 1.4;
+  stroke-dasharray: 22 400;
+  stroke-dashoffset: -150;
+  opacity: 0.8;
+}
+.mg-liquidfill {
+  fill: var(--mg-pore);
+}
+.mg-air {
+  fill: var(--anatomy-card);
+}
+.mg-link {
+  fill: none;
+  stroke: var(--mg-net);
+  stroke-width: 1.1;
+  stroke-linecap: round;
+}
+.mg-np {
+  fill: var(--mg-net);
+}
+.mg-carry-dot[data-kind="husk"] {
+  fill: #c9a24e;
+}
+.mg-carry-dot[data-kind="ash"] {
+  fill: #b9b7ae;
+}
+.mg-carry-dot[data-kind="drop"] {
+  fill: var(--mg-water);
+}
+.mg-flame-outer {
+  fill: url(#mg-flame-grad);
+}
+.mg-flame-inner {
+  fill: var(--mg-flame-blue);
+  opacity: 0.85;
+}
+.mg-heat path {
+  fill: url(#mg-heat-grad);
+  stroke: none;
+}
+
+.mg-credit {
+  position: absolute;
+  top: 34px;
+  right: 20px;
+  color: var(--anatomy-muted);
+  font-family: var(--anatomy-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  pointer-events: none;
+}
+.mg-heat-btn {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px 3px 7px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  box-shadow: 0 0 0 1px var(--anatomy-faint);
+  color: var(--anatomy-text);
+  font: 10px/1.4 var(--anatomy-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.mg-heat-btn:hover,
+.mg-heat-btn:focus-visible {
+  box-shadow: 0 0 0 1px var(--anatomy-mid);
+  outline: none;
+}
+.mg-heat-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--mg-off);
+  transition: background 0.3s;
+}
+.mg-heat-btn[aria-pressed="true"] .mg-heat-dot {
+  background: var(--mg-flame);
+}
+
+.mg-stage {
+  position: relative;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: ew-resize;
+  margin: 0 -8px;
+}
+.mg-stage:focus-visible {
+  outline: 1px solid var(--anatomy-muted);
+  outline-offset: 6px;
+}
+.mg-stage > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.mg-said {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.mg-specs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0;
+  border-left: 1px solid var(--anatomy-faint);
+}
+.mg-specs > div {
+  padding: 10px 12px 9px;
+  border: 1px solid var(--anatomy-faint);
+  border-left: 0;
+  border-top: 0;
+}
+.mg-specs dt {
+  color: var(--anatomy-muted);
+  font-family: var(--anatomy-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.mg-specs dt i {
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  opacity: 0.8;
+}
+.mg-specs dd {
+  margin: 3px 0 0;
+  color: var(--anatomy-strong);
+  font-family: var(--anatomy-mono);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  transition: opacity 0.4s;
+}
+.mg-specs dd[data-empty] {
+  opacity: 0.35;
+}
+
+@media (max-width: 560px) {
+  .mg-credit {
+    top: 32px;
+    right: 12px;
+    font-size: 8.5px;
+  }
+  .mg-heat-btn {
+    top: auto;
+    bottom: 64px;
+    left: 12px;
+  }
+  .mg .iso-plate-corner[data-corner="title"] {
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    max-width: 62%;
+    white-space: normal;
+    text-align: right;
+    line-height: 1.3;
+  }
+  .mg-credit {
+    top: 46px;
+  }
+  .mg-stage {
+    margin: 0 -10px;
+  }
+  .mg-specs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
